@@ -1,0 +1,4 @@
+2022/08/23 개발 끄읕
+1. routes/api.js에서 newData로 apikey, uuid save하기
+그리고 잘 꾸며서 그 키 뭐시기 보내주기
+

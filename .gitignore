@@ -1,0 +1,4 @@
+node_modules
+memo
+data/config.json
+package-lock.json

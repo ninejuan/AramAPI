@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<link href="stylesheets/style.css" rel="stylesheet">
+<% if (passport) { %>
+    <form action="/api/getKey" method="get">
+        <button type="submit">API 키 발급</button>
+    </form>
+<% } else { %>
+  <form action="/login" method="get">
+    <button type="submit">로그인</button>
+  </form>
+<% } %>
+</html>
