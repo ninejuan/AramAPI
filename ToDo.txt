@@ -2,3 +2,7 @@
 1. routes/api.js에서 newData로 apikey, uuid save하기
 그리고 잘 꾸며서 그 키 뭐시기 보내주기
 
+2022/08/24 메모
+checkKey 함수에서 DB에서 파라미터 값으로 입력받은 Key를 찾아서 UUID 가져오기
+만일 DB에 존재하지 않는 키라면 404 리턴
+만일 존재한다면, 키 값과 uuid 값이 유효한지 확인.

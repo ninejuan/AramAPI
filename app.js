@@ -7,8 +7,6 @@ const session = require('express-session');
 
 const bodyParser = require('body-parser');
 
-const UserDB = require('./models/user')
-
 const config = require('./data/config.json')
 
 // Router

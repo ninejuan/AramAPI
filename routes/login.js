@@ -42,30 +42,5 @@ router.get('/naver', passport.authenticate('naver', { failureRedirect: '/' }), a
     }
 })
 
-router.get('/discord', passport.authenticate('discord', { failureRedirect: '/' }), async function (req, res) {
-    if (!req.user) {
-        res.redirect('/')
-    } else {
-        res.redirect('/')
-    }
-})
-
-router.post('/id', passport.authenticate('local', { failureRedirect: '/login' }), async function (req, res) {
-    if (!req.user) {
-        console.log(req)
-    console.log('=' * 10)
-    console.log(res)
-        res.redirect('/')
-    } else {
-        console.log(req)
-    console.log('=' * 10)
-    console.log(res)
-        res.redirect('/')
-    }
-    console.log(req)
-    console.log('=' * 10)
-    console.log(res)
-})
-
 
 module.exports = router;
