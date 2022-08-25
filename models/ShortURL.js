@@ -1,15 +1,8 @@
-const linkSchema = new mongoose.Schema({
-    identifier: {
-      required: true,
-      type: String,
-    },
-    url: {
-      required: true,
-      type: String,
-    },
-    clicks: {
-      required: true,
-      type: Number,
-      default: 0,
-    }
-  });
+const mongo = require("mongoose")
+
+const surl = new mongo.Schema({
+    code: { type: String, required: true },
+    origin: { type: String, required: true }
+})
+
+module.exports = mongo.model("단축링크", surl)

@@ -6,7 +6,7 @@ module.exports = new RateLimit({
     handler(req, res) {
         res.status(429).json({
             code: '429',
-            message: 'Too many requests. please try again later'
+            message: 'Too many requests. please try again later.'
         })
     }
 })
