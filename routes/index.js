@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const UrlDB = require('../models/ShortURL');
 
 let Callback_RedirectUri;
 const checkAuth = (req, res, next) => {
@@ -27,5 +28,17 @@ router.get('/logout', async (req, res) => {
     res.redirect('/')
     
   })
-})
+});
+
+// router.get('/:code', async (req, res) => {
+//   let code = req.params.code;
+//   const data = await UrlDB.findOne({
+//       code: code,
+//   })
+//   if (data) {
+//       let redUrl = data.origin;
+//       res.redirect(redUrl)
+//   }
+// });
+
 module.exports = router;

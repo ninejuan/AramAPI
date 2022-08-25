@@ -13,7 +13,7 @@ const config = require('./data/config.json')
 var indexRouter = require('./routes/index');
 var ApiRouter = require('./routes/api');
 var AuthRouter = require('./routes/login');
-var ShortUrlRouter = require('./routes/shorten');
+// var ShortUrlRouter = require('./routes/shorten');
 
 // passport
 const passport = require('passport');
@@ -44,7 +44,7 @@ module.exports.load = async => {
   app.use('/', indexRouter);
   app.use('/api', ApiRouter);
   app.use('/login', AuthRouter);
-  app.use('/u', ShortUrlRouter);
+  // app.use('/u', ShortUrlRouter);
 
   app.use(passport.initialize());
   app.use(passport.session());

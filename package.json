@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "main": "app.js",
+  "startDev": "20220822",
   "scripts": {
     "start": "node ./bin/www"
   },
@@ -17,6 +18,7 @@
     "express-session": "^1.17.3",
     "hanspell": "^0.9.4",
     "http-errors": "~1.6.3",
+    "inko": "^1.1.1",
     "kpop": "^0.1.2",
     "mongoose": "^6.5.2",
     "morgan": "~1.9.1",

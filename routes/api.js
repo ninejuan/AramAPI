@@ -8,6 +8,9 @@ const hanspell = require('hanspell');
 const validUrl = require('valid-url');
 const kpop = require('kpop');
 
+const Inko = require('inko');
+const inko = new Inko();
+
 const UrlDB = require('../models/ShortURL')
 
 async function checkKey(key) {  
@@ -133,41 +136,53 @@ router.get('/grammar', apiLimiter, async (req, res) => {
 router.get('/shorten', apiLimiter, async (req, res) => {
 	let UrlCode = RandCha(7);
 	let origin = req.query.url;
-	if (!origin) {
-		res.status(400).json({
-			"message": "Please provide the url to shorten.",
-			"status": "400",
-			"success": "false"
+	const origindata = await UrlDB.findOne({ origin: origin })
+	if (origindata) {
+		res.status(200).json({
+			"message": "successfully registered link",
+			"status": "200",
+			"url": `${require('../data/config.json').Web.url}/u/${origindata.code}`,
+			"code": `${origindata.code}`,
+			"original": `${origin}`,
+			"success": "true"
+		})
+	} else if (!origindata) {
+		if (!origin) {
+			res.status(400).json({
+				"message": "Please provide the url to shorten.",
+				"status": "400",
+				"success": "false"
+			})
+		}
+		if (!validUrl.isUri(origin)) {
+			res.status(400).json({
+				"message": "please provide valid url",
+				"status": "400",
+				"success": "false"
+			})
+		}
+		const data = await UrlDB.findOne({ code: UrlCode })
+		if (data) {
+			res.status(500).json({
+				"message": "(Server Error) Random Url Code is already in use",
+				"status": "500",
+				"success": "false"
+			})
+		}
+		const newData = new UrlDB({
+			code: UrlCode,
+			origin: origin,
+		})
+		newData.save();
+		res.status(200).json({
+			"message": "successfully registered link",
+			"status": "200",
+			"url": `${require('../data/config.json').Web.url}/u/${UrlCode}`,
+			"code": `${UrlCode}`,
+			"original": `${origin}`,
+			"success": "true"
 		})
 	}
-	if (!validUrl.isUri(origin)) {
-		res.status(400).json({
-			"message": "please provide valid url",
-			"status": "400",
-			"success": "false"
-		})
-	}
-	const data = await UrlDB.findOne({ code: UrlCode })
-	if (data) {
-		res.status(500).json({
-			"message": "(Server Error) Random Url Code is already in use",
-			"status": "500",
-			"success": "false"
-		})
-	}
-	const newData = new UrlDB({
-		code: UrlCode,
-		origin: origin,
-	})
-	newData.save();
-	res.status(200).json({
-		"message": "successfully registered link",
-		"status": "200",
-		"url": `${require('../data/config.json').Web.url}/u/${UrlCode}`,
-		"code": `${UrlCode}`,
-		"original": `${origin}`,
-		"success": "true"
-	})
 });
 
 router.get('/randomnumber', apiLimiter, async (req, res) => {
@@ -220,6 +235,7 @@ router.get('/hangulify', apiLimiter, async (req, res) => {
 		})
 	}
 	res.status(200).json({
+		"license": "kpop module used https://www.npmjs.com/package/kpop",
 		"status": "200",
 		"original": `${text}`,
 		"result": `${kpop.hangulify(text)}`,
@@ -237,12 +253,53 @@ router.get('/romanize', apiLimiter, async (req, res) => {
 		})
 	}
 	res.status(200).json({
+		"license": "kpop module used https://www.npmjs.com/package/kpop",
 		"status": "200",
 		"original": `${text}`,
 		"result": `${kpop.romanize(text)}`,
 		"success": "true"
 	})
 });
+
+router.get('/en2ko', apiLimiter, async (req, res) => {
+	let text = req.query.text;
+	if (!text) {
+		res.status(400).json({
+			"message": "Please provide the text to change to Korean typing",
+			"status": "400",
+			"success": "false"
+		});
+	}
+	res.status(200).json({
+		"license": "inko module used https://www.npmjs.com/package/inko",
+		"status": "200",
+		"origin": `${text}`,
+		"result": `${inko.en2ko(`${text}`)}`,
+		"success": "true"
+	});
+});
+
+router.get('/ko2en', apiLimiter, async (req, res) => {
+	let text = req.query.text;
+	if (!text) {
+		res.status(400).json({
+			"message": "Please provide the text to change to English typing",
+			"status": "400",
+			"success": "false"
+		});
+	}
+	res.status(200).json({
+		"license": "inko module used https://www.npmjs.com/package/inko",
+		"status": "200",
+		"origin": `${text}`,
+		"result": `${inko.ko2en(`${text}`)}`,
+		"success": "true"
+	});
+});
+
+router.get('/ahmola', apiLimiter, async (req, res) => {
+	
+})
 
 router.get('/github/:username', apiLimiter, async (req, res) => {
   const username = req.params.username;
