@@ -1,0 +1,53 @@
+<%- include("../partials/header") %>
+<%- include("../partials/meta") %>
+<link rel="stylesheet" href="/css/style.css">
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+<% if (!lyrics) { %>
+<div class="container has-text-centered" style="padding-top: 80px; text-align: center;">
+    <br>
+    <h1 class="text-middle" style="color: white; font-weight: bolder;">가사 찾기</h1>
+    <br>
+    <p class="text-middle" style="color: white;">
+        아래 검색 창을 통해 가사를 검색해보세요
+    </p>
+    <hr style="background-color: rgb(131, 131, 131)">
+    <form action="/lyrics" method="get" style="display:inline-block;"> 
+        <label style="color: white;">가수</label>
+        <input style="border: none;" name="singer" type="text" placeholder="IU" autocomplete="off" required>
+        <br><br>
+        <label style="color: white;">노래</label>
+        <input style="border: none;" name="name" type="text" placeholder="내 손을 잡아" autocomplete="off" required>
+        <br><br>
+        <button type="submit">확인</button>
+    </form>
+    <br>    
+    <hr style="background-color: rgb(131, 131, 131)">
+</div>
+<% } else { %>
+    <div class="container has-text-centered" style="padding-top: 80px; text-align: center;">
+        <br>
+        <h1 class="text-middle" style="color: white; font-weight: bolder;">가사 찾기</h1>
+        <br>
+        <p class="text-middle" style="color: white;">
+            아래 검색 창을 통해 가사를 검색해보세요
+        </p>
+        <hr style="background-color: rgb(131, 131, 131)">
+        <div class="div-discord sm-round div-lyrics">
+            <h2 style="color: white;"><%= query.name %>의 가사 검색 결과</h2>
+            <h3 style="color: pink;"><%- lyrics %></h3>
+        </div>
+        <hr style="background-color: rgb(131, 131, 131)">
+        <form action="/lyrics" method="get" style="display:inline-block;"> 
+            <label style="color: white;">가수</label>
+            <input style="border: none;" name="singer" type="text" placeholder="IU" autocomplete="off" required>
+            <br><br>
+            <label style="color: white;">노래</label>
+            <input style="border: none;" name="name" type="text" placeholder="내 손을 잡아" autocomplete="off" required>
+            <br><br>
+            <button type="submit">확인</button>
+        </form>
+        <br>    
+        <hr style="background-color: rgb(131, 131, 131)">
+    </div>
+<% } %>
+<%- include("../partials/footer") %>

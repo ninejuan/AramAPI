@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: #191919;">
+<head>
+    <link href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,800;1,800&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">    
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+    <link href='https://css.gg/math-plus.css' rel='stylesheet'>
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="/css/header.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <nav class="navbar" style="background-color: #191919;" role="navigation" aria-label="main navigation">
+        <div class="container">
+                    <header id="header" class="fixed-top">
+                        <div class="container d-flex align-items-center justify-content-between">
+                    
+                          <h1 class="logo"><a href="/">아람이 API</a></h1>
+                          
+                          <nav id="navbar" class="navbar">
+                            <ul>
+                              <li><a class="nav-link scrollto" href="https://status.laon.dev/status/team-laon" target="_blank">상태</a></li>
+                              <li><a class="nav-link scrollto " href="https://aramy.net/i/laon">디스코드</a></li>
+                              <li><a class="getstarted scrollto" href="https://docs.aramy.net"><strong>API 문서</strong></a></li>
+                            </ul>
+                            <i class="bi bi-list mobile-nav-toggle"></i>
+                          </nav>
+                    
+                        </div>
+                      </header>
+            </div>
+        </div>
+    </nav>
+
+</head>
+
+<body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+        if ($navbarBurgers.length > 0) {
+            $navbarBurgers.forEach( el => {
+                el.addEventListener('click', () => {
+                    const target = el.dataset.target;
+                    const $target = document.getElementById(target);
+
+                    el.classList.toggle('is-active');
+                    $target.classList.toggle('is-active');
+                });
+            });
+        }
+    });
+</script>
+<script src="/js/main.js"></script>

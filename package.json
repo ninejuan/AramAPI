@@ -1,0 +1,40 @@
+{
+  "name": "pj.nine",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.js",
+  "startDev": "20220822",
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "cookie-parser": "~1.4.4",
+    "crypto": "^1.0.1",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "express-rate-limit": "^5.5.1",
+    "express-session": "^1.17.3",
+    "hanspell": "^0.9.4",
+    "http-errors": "~1.6.3",
+    "inko": "^1.1.1",
+    "kpop": "^0.1.2",
+    "lyrics-finder": "^21.7.0",
+    "mongoose": "^6.5.2",
+    "morgan": "~1.9.1",
+    "node-fetch": "^2.6.7",
+    "passport": "^0.6.0",
+    "passport-discord": "^0.1.4",
+    "passport-github": "^1.1.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-kakao": "^1.0.1",
+    "passport-local-mongoose": "^7.1.2",
+    "passport-naver": "^1.0.6",
+    "uuid-apikey": "^1.5.3",
+    "valid-url": "^1.0.9"
+  }
+}
